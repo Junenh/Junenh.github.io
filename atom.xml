@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://junenh.github.io</id>
+    <title>Slack</title>
+    <updated>2024-11-10T14:47:10.441Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://junenh.github.io"/>
+    <link rel="self" href="https://junenh.github.io/atom.xml"/>
+    <subtitle>道阻且长，行则将至！</subtitle>
+    <logo>https://junenh.github.io/images/avatar.png</logo>
+    <icon>https://junenh.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, Slack</rights>
+    <entry>
+        <title type="html"><![CDATA[面试准备]]></title>
+        <id>https://junenh.github.io/post/mian-shi-zhun-bei/</id>
+        <link href="https://junenh.github.io/post/mian-shi-zhun-bei/">
+        </link>
+        <updated>2024-09-17T14:27:32.000Z</updated>
+        <content type="html"><![CDATA[<p>项目介绍？？？</p>
+<p>网络相关？？</p>
+<p>场景题？？</p>
+<p>相关技术：SpringCloud￾￾ibaba+Nacos+Fegin+GateWay+Mybatis-Plus+RocketMq+Redis+Mysql+Canal+xxl￾job+SpringSecurity<br>
+工作内容：</p>
+<ol>
+<li>
+<p>负责编写ERP系统报表模块的业务代码，涵盖市场价报表、出入库报表等，确保数据准确性和实时性。</p>
+</li>
+<li>
+<p>利用canal实现对主表数据的监控，通过数据分离技术，有效减轻业务数据处理压力。</p>
+</li>
+</ol>
+<p>canal监听的原理以及使用 ？？？</p>
+<ol start="3">
+<li>
+<p>设计并实现历史业务员表结构，编写配送点与历史业务员关联的逻辑代码，提升系统数据管理效率。</p>
+</li>
+<li>
+<p>开发录单过滤功能，优化前端录单体验，通过逻辑筛选排除不必要的配送点信息。</p>
+</li>
+</ol>
+<p>表设计</p>
+<ol start="5">
+<li>负责采购App消息提醒功能的编码工作，采用xxl-job实现消息的定时清理，保障系统运行的稳定性。</li>
+</ol>
+<p>采购App消息的设计与实现</p>
+<ol start="6">
+<li>
+<p>参与马派配送系统客户档案与门店档案业务逻辑的开发，以及溯源系统的第三方数据导入接口的代码编写。</p>
+</li>
+<li>
+<p>通过Arthas监控工具对查询配送点信息的接口进行性能优化，显著提升接口响应速度，从1.8秒优化至3毫秒。</p>
+</li>
+</ol>
+<p>Arthas常用命令</p>
+<ol>
+<li>使用自定义注解，实现对第三方数据图片地址的处理，上传到本地OSS，存储OSS图片上传的地址。<br>
+理，教师管理，论坛管理，帖子管理，数据展示等</li>
+</ol>
+<p>自定义注解的实现逻辑<br>
+阿里oss的使用</p>
+<p>描述：一个院校学生论坛的项目，包括系统管理后台和PC端应用两部分。本人主要做系统后台，后台模块有系统管理，学生管理。<br>
+工作内容：</p>
+<ol>
+<li>参与后台项目的搭建，以及后台的系统管理的编写，使用Spring Security实现权限控制。使用token令牌的方式进行登录校验，设计用户-权限-角色表，编写对应的权限管理，角色管理的逻辑。</li>
+</ol>
+<p>security权限管理的逻辑</p>
+<ol start="2">
+<li>
+<p>搭建图片服务器Zimg，以及编写基础的文件上传和图片上传接口。<br>
+Zimg<br>
+文件上传，图片上传相关逻辑</p>
+</li>
+<li>
+<p>使用AOP通过定义切入点，编写对应逻辑，完成对系统的操作日志记录。</p>
+</li>
+</ol>
+<p>AOP对应的实现逻辑</p>
+<ol start="4">
+<li>利用Jenkins工具结合码云实现后端自动化部署，使用git结合码云进行代码托管及拉取。</li>
+</ol>
+<p>复习jenkins，以及对应的脚本文件</p>
+<ol start="5">
+<li>使用 BitMap 数据类型编写用户签到功能。</li>
+</ol>
+<p>bitMap的用户签到实现逻辑</p>
+<p>#java基础</p>
+<p>static</p>
+<p>string</p>
+<p>final</p>
+<p>#面向对象</p>
+<p>封装： 对一个</p>
+<p>继承：</p>
+<p>多态：</p>
+<p>#集合<br>
+单列集合<br>
+list<br>
+ArraryList<br>
+LinkedList<br>
+set<br>
+HashSet</p>
+<p>多列集合</p>
+<p>Map<br>
+HashMap<br>
+CurrentHashMap<br>
+HashTable</p>
+<p>#多线程</p>
+<p>#数据结构与算法<br>
+红黑树<br>
+排序算法<br>
+二叉树</p>
+<p>#设计模式 （策略，单例，工厂）</p>
+<p>策略模式</p>
+<p>单例模式</p>
+<p>工厂模式：最大优点是为了解耦</p>
+<p>#JVM</p>
+<p>JVM内存模型</p>
+<p>类加载机制</p>
+<p>垃圾回收器</p>
+<p>垃圾回收算法</p>
+<p>#数据库</p>
+<p>索引</p>
+<p>事务</p>
+<p>sql优化</p>
+<p>#redis<br>
+redis常用数据结构</p>
+<p>数据持久化</p>
+<p>双写一致性</p>
+<p>#rabbitMq<br>
+rabbitMq相关复习</p>
+<p>#xxl-job<br>
+xxl-job的使用</p>
+<p>#框架相关</p>
+<p>IOC</p>
+<p>AOP</p>
+<p>Bean的生命周期</p>
+<p>#微服务</p>
+<p>Alibaba以及对应组件的使用</p>
+<p>#部署</p>
+<p>linux基础命令的复习</p>
+<p>jenkins自动化部署的逻辑</p>
+<p>实现原理：使用jenkins结合gitee，利用webhook钩子进行关联，用户在推送给到gitee上时，jenkins根据webhook钩子能够监听到数据的推送，就将gitee仓库拉取到jenkins中，然后根据写好的shell脚本，自动化实现项目的构建</p>
+<p>docker ???</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[路线]]></title>
+        <id>https://junenh.github.io/post/lu-xian/</id>
+        <link href="https://junenh.github.io/post/lu-xian/">
+        </link>
+        <updated>2024-09-17T02:14:56.000Z</updated>
+        <content type="html"><![CDATA[<p>分布式架构<br>
+微服务架构<br>
+源码分析<br>
+并发编程<br>
+性能优化<br>
+数据结构与算法<br>
+高并发实战项目<br>
+工程化协作</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[实习日记]]></title>
+        <id>https://junenh.github.io/post/shi-xi-ri-ji/</id>
+        <link href="https://junenh.github.io/post/shi-xi-ri-ji/">
+        </link>
+        <updated>2024-09-12T15:09:47.000Z</updated>
+        <content type="html"><![CDATA[<pre><code class="language-@Retention(RetentionPolicy.RUNTIME)">@Target(ElementType.FIELD)  //在字段上使用
+public @interface FileTransfer {
+} 
+
+需求
+第三方导入图片地址数据，地址由url组成，对应的url需要替换成我们本地的oss生成的地址？
+
+实现方式
+1. 使用自定义注解，对需要转换的图片地址进行标记。
+2. 在第三方数据导入时，将对象中的图片url地址放入到networkFileToStorage方法中。
+3. 该方法对其url数据进行处理，对于标记注解的字段，做一系列的地址处理，并上传到本地oss中，将传入的地址转换为存入的本地oss的图片地址。
+4. 将地址存入到本地服务的表中。
+5. 将其打包成一个工具报，通过静态方式去引入方法。
+
+
+核心处理类
+
+public class FileTransferUtil {
+
+    /**
+     * 将含有FileTransfer注解的网络文件上传至存储空间
+     *
+     * @param obj 对象
+     */
+    public static void networkFileToStorage(Object obj) {
+        // 基本类型不处理
+        if (ObjectUtil.isBasicType(obj)) {
+            return;
+        }
+        // 获取对象中含有FileTransfer的字段
+        Field[] fields = ReflectUtil.getFields(obj.getClass(), field -&gt; field.isAnnotationPresent(FileTransfer.class));
+        for (Field field : fields) {
+            // 获取字段信息
+            Object networkFileUrl = ReflectUtil.getFieldValue(obj, field);
+            if(ObjectUtil.isEmpty(networkFileUrl)) {
+                continue;
+            }
+            // 存储网络文件到指定存储空间
+            if (networkFileUrl instanceof String) {
+                String storageUrl = convertToStorage((String) networkFileUrl);
+                // 将字段修改为转换后的文件路径
+                ReflectUtil.setFieldValue(obj, field, storageUrl);
+            }
+        }
+    }
+
+    /**
+     * @param networkFileURI 网络文件地址
+     * @return 转换后的文件地址
+     */
+    @SneakyThrows
+    private static String convertToStorage(String networkFileURI) {
+        // 校验url是否已记录
+        FileTransferInterface transferInterface = SpringUtils.getBean(FileTransferInterface.class);
+        String storageUrl = transferInterface.getStorageURLBySource(networkFileURI);
+        if (StrUtil.isNotBlank(storageUrl)) {
+            return storageUrl;
+        }
+        // 加载网络文件
+        byte[] bytes = HttpUtil.downloadBytes(networkFileURI);
+        ByteArrayInputStream inputStream = IoUtil.toStream(bytes);
+        // 构建新文件名
+        String suffix = FileUtil.getSuffix(URLUtil.getPath(networkFileURI));
+        String fileName = IdUtil.fastSimpleUUID() + (StrUtil.isBlank(suffix) ? &quot;&quot; : StrUtil.DOT + suffix);
+        // 上传到存储
+        String storageURL = OssClient.upload(fileName, inputStream);
+        // 保存文件映射关系
+        transferInterface.saveStorageURLAndSource(networkFileURI, storageURL);
+        return storageURL;
+    }
+}</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[学习方式]]></title>
+        <id>https://junenh.github.io/post/xue-xi-fang-shi/</id>
+        <link href="https://junenh.github.io/post/xue-xi-fang-shi/">
+        </link>
+        <updated>2024-08-07T00:37:46.000Z</updated>
+        <content type="html"><![CDATA[<p>学习一门技术的时候，要从全局的角度来了解技术</p>
+<ol>
+<li>思考一下它由哪些模块构成的</li>
+<li>提供了哪些功能</li>
+<li>同类数据有什么优势。</li>
+</ol>
+<p>面对业务场景，基于积累的经验和现有的开源工具，能快速给出合理的解决思路和实现过程。</p>
+<p>系统的架构与代码设计能适应业务的不断变化和各种需求。</p>
+<p>业务能说的井井有条，代码能写的明明白白，得到机会的可能性更大。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[java基础]]></title>
+        <id>https://junenh.github.io/post/java-ji-chu/</id>
+        <link href="https://junenh.github.io/post/java-ji-chu/">
+        </link>
+        <updated>2024-07-15T15:10:03.000Z</updated>
+        <content type="html"><![CDATA[<p>接口的好处</p>
+<ol>
+<li>可以实现多继承</li>
+<li>代码可复用，提高代码的扩展性和可维护性</li>
+</ol>
+<p>jdk8开始，接口中新增些方法</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring框架]]></title>
+        <id>https://junenh.github.io/post/spring-kuang-jia/</id>
+        <link href="https://junenh.github.io/post/spring-kuang-jia/">
+        </link>
+        <updated>2024-07-07T07:37:46.000Z</updated>
+        <content type="html"><![CDATA[<p>IOC</p>
+<p>AOP</p>
+]]></content>
+    </entry>
+</feed>

@@ -1,0 +1,282 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>实习日记 | Slack</title>
+
+<link rel="shortcut icon" href="https://junenh.github.io/favicon.ico?v=1731249963579">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://junenh.github.io/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            Slack
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/friends" class="menu gt-a-link">
+                    友链
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1731249963579"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    实习日记
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2024-09-12 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <pre><code class="language-@Retention(RetentionPolicy.RUNTIME)">@Target(ElementType.FIELD)  //在字段上使用
+public @interface FileTransfer {
+} 
+
+需求
+第三方导入图片地址数据，地址由url组成，对应的url需要替换成我们本地的oss生成的地址？
+
+实现方式
+1. 使用自定义注解，对需要转换的图片地址进行标记。
+2. 在第三方数据导入时，将对象中的图片url地址放入到networkFileToStorage方法中。
+3. 该方法对其url数据进行处理，对于标记注解的字段，做一系列的地址处理，并上传到本地oss中，将传入的地址转换为存入的本地oss的图片地址。
+4. 将地址存入到本地服务的表中。
+5. 将其打包成一个工具报，通过静态方式去引入方法。
+
+
+核心处理类
+
+public class FileTransferUtil {
+
+    /**
+     * 将含有FileTransfer注解的网络文件上传至存储空间
+     *
+     * @param obj 对象
+     */
+    public static void networkFileToStorage(Object obj) {
+        // 基本类型不处理
+        if (ObjectUtil.isBasicType(obj)) {
+            return;
+        }
+        // 获取对象中含有FileTransfer的字段
+        Field[] fields = ReflectUtil.getFields(obj.getClass(), field -&gt; field.isAnnotationPresent(FileTransfer.class));
+        for (Field field : fields) {
+            // 获取字段信息
+            Object networkFileUrl = ReflectUtil.getFieldValue(obj, field);
+            if(ObjectUtil.isEmpty(networkFileUrl)) {
+                continue;
+            }
+            // 存储网络文件到指定存储空间
+            if (networkFileUrl instanceof String) {
+                String storageUrl = convertToStorage((String) networkFileUrl);
+                // 将字段修改为转换后的文件路径
+                ReflectUtil.setFieldValue(obj, field, storageUrl);
+            }
+        }
+    }
+
+    /**
+     * @param networkFileURI 网络文件地址
+     * @return 转换后的文件地址
+     */
+    @SneakyThrows
+    private static String convertToStorage(String networkFileURI) {
+        // 校验url是否已记录
+        FileTransferInterface transferInterface = SpringUtils.getBean(FileTransferInterface.class);
+        String storageUrl = transferInterface.getStorageURLBySource(networkFileURI);
+        if (StrUtil.isNotBlank(storageUrl)) {
+            return storageUrl;
+        }
+        // 加载网络文件
+        byte[] bytes = HttpUtil.downloadBytes(networkFileURI);
+        ByteArrayInputStream inputStream = IoUtil.toStream(bytes);
+        // 构建新文件名
+        String suffix = FileUtil.getSuffix(URLUtil.getPath(networkFileURI));
+        String fileName = IdUtil.fastSimpleUUID() + (StrUtil.isBlank(suffix) ? &quot;&quot; : StrUtil.DOT + suffix);
+        // 上传到存储
+        String storageURL = OssClient.upload(fileName, inputStream);
+        // 保存文件映射关系
+        transferInterface.saveStorageURLAndSource(networkFileURI, storageURL);
+        return storageURL;
+    }
+}</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://junenh.github.io/post/xue-xi-fang-shi/" class="post-title gt-a-link">
+                    学习方式
+                </a>
+            </div>
+        
+
+        
+            <span id="/post/shi-xi-ri-ji/" class="leancloud_visitors" data-flag-title="实习日记">
+                <em class="post-meta-item-text">阅读量 </em>
+                <i class="leancloud-visitors-count">0</i>
+            </span>
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: '4PTO9nZP1lPNOSWXyOjrQgTG-gzGzoHsz',
+		appKey: 'Xiwff32gbF7vidWWSMD3oyRB',
+		avatar: 'monsterid',
+		pageSize: 5,
+		recordIp: true,
+		placeholder: '欢迎评论。',
+		visitor: true,
+	});
+</script>
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">道阻且长，行则将至！</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/junenh" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Slack</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://junenh.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
